@@ -58,7 +58,7 @@ def hero_championship(hero_league, seasons=1):
                 hero_match(hero_league[i], hero_league[j])
 
 
-def show_heros(hero_league):
+def show_heroes(hero_league):
     for hero in hero_league:
         print("Hero/XP/Ratio")
         print(f"{hero[0]},{hero[1]},{hero[2]}")
@@ -104,6 +104,8 @@ if __name__ == '__main__':
     os.system('cls')
     
     hero_league = random_hero_league(20)
+    show_heroes(hero_league)
+    
     print(hero_league[0])
     print('X')
     print(hero_league[1])
