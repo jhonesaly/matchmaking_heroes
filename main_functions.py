@@ -49,6 +49,15 @@ def random_hero_league(hero_quantity):
     return hero_league
 
 
+def hero_championship(hero_league, seasons=1):
+    for i in range(len(hero_league)):
+        for j in range(len(hero_league))
+            if i == j :
+                continue
+            else:
+                hero_match(hero_league[i], hero_league[j])
+
+
 def lvl_info(hero_xp):
     if hero_xp < 1000:
         return "Ferro"
