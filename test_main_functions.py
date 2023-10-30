@@ -11,7 +11,7 @@ class TestMainFunctions(unittest.TestCase):
     def test_random_hero_xp(self):
         min_number = 1
         max_number = 11000
-        xp = random_hero_xp(min_number, max_number)
+        xp = random_number(min_number, max_number)
         self.assertTrue(min_number <= xp <= max_number)  # Verifica se o xp está dentro do intervalo especificado
 
     def test_random_hero_league(self):

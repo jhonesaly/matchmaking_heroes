@@ -4,8 +4,9 @@ from main_functions import *
 
 # Configurações iniciais
 
-print("Bem-vindo ao ranking dos heróis!")
-herois = random_hero_league(10)
+print("Bem-vindo ao machmaking dos heróis!")
+herois = random_hero_league(20)
+
 
 while True:
 

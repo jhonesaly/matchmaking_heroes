@@ -20,7 +20,7 @@ def random_hero_name():
     return nome.capitalize()
 
 
-def random_hero_xp(min_number, max_number):
+def random_number(min_number, max_number):
     return random.randint(min_number, max_number)
 
 
@@ -28,7 +28,7 @@ def random_hero_league(hero_quantity):
     hero_league = []
     for i in range(hero_quantity):
         hero_name = random_hero_name()
-        hero_xp = random_hero_xp(1,11000)
+        hero_xp = random_number(1,11000)
         hero_rating = 0
         hero_league.append([hero_name, hero_xp, hero_rating])
 
@@ -54,12 +54,18 @@ def lvl_info(hero_xp):
         return "Radiante"
     
 def hero_match(hero_1, hero_2):
-    if hero_1[1] > hero_2[1]:
+    hero_total_xp = hero_1[1] + hero_2[1]
+    match_number = random_number(1,hero_total_xp)
+
+    if match_number < hero_1[1]:
         hero_1[2] += 1
         hero_2[2] -= 1
+        return hero_1[0]
     else:
         hero_2[2] += 1
         hero_1[2] -= 1
+        return hero_2[0]
+
 
 def rating_info(hero_rating):
     if hero_rating < 10:
@@ -76,3 +82,15 @@ def rating_info(hero_rating):
         return "Lendário"
     else:
         return "Imortal"
+
+if __name__ == '__main__':
+
+    import os
+    os.system('cls')
+    
+    hero_league = random_hero_league(20)
+    print(hero_league[0])
+    print('X')
+    print(hero_league[1])
+    winner = hero_match(hero_league[0],hero_league[1])
+    print(f"o vencedor é {winner}")
