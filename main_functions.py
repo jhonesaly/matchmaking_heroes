@@ -58,6 +58,11 @@ def hero_championship(hero_league, seasons=1):
                 hero_match(hero_league[i], hero_league[j])
 
 
+def show_heros(hero_league):
+    for hero in hero_league:
+        print("Hero/XP/Ratio")
+        print(f"{hero[0]},{hero[1]},{hero[2]}")
+
 def lvl_info(hero_xp):
     if hero_xp < 1000:
         return "Ferro"
