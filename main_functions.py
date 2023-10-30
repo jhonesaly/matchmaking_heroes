@@ -3,7 +3,7 @@
 import random
 
 
-def random_hero_name():
+def random_name():
     consoantes = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z']
     vogais = ['a', 'e', 'i', 'o', 'u']
 
@@ -24,10 +24,24 @@ def random_number(min_number, max_number):
     return random.randint(min_number, max_number)
 
 
+def hero_match(hero_1, hero_2):
+    hero_total_xp = hero_1[1] + hero_2[1]
+    match_number = random_number(1,hero_total_xp)
+
+    if match_number < hero_1[1]:
+        hero_1[2] += 1
+        hero_2[2] -= 1
+        return hero_1[0]
+    else:
+        hero_2[2] += 1
+        hero_1[2] -= 1
+        return hero_2[0]
+
+
 def random_hero_league(hero_quantity):
     hero_league = []
     for i in range(hero_quantity):
-        hero_name = random_hero_name()
+        hero_name = random_name()
         hero_xp = random_number(1,11000)
         hero_rating = 0
         hero_league.append([hero_name, hero_xp, hero_rating])
@@ -52,19 +66,6 @@ def lvl_info(hero_xp):
         return "Imortal"
     else:
         return "Radiante"
-    
-def hero_match(hero_1, hero_2):
-    hero_total_xp = hero_1[1] + hero_2[1]
-    match_number = random_number(1,hero_total_xp)
-
-    if match_number < hero_1[1]:
-        hero_1[2] += 1
-        hero_2[2] -= 1
-        return hero_1[0]
-    else:
-        hero_2[2] += 1
-        hero_1[2] -= 1
-        return hero_2[0]
 
 
 def rating_info(hero_rating):
