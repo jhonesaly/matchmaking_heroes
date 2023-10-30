@@ -42,9 +42,7 @@ def lvl_info(hero_xp):
         return "Bronze"
     elif 2001 <= hero_xp <= 5000:
         return "Prata"
-    elif 5001 <= hero_xp <= 6000:
-        return "Ouro"
-    elif 6001 <= hero_xp <= 7000:
+    elif 5001 <= hero_xp <= 7000:
         return "Ouro"
     elif 7001 <= hero_xp <= 8000:
         return "Platina"
@@ -62,3 +60,19 @@ def hero_match(hero_1, hero_2):
     else:
         hero_2[2] += 1
         hero_1[2] -= 1
+
+def rating_info(hero_rating):
+    if hero_rating < 10:
+        return "Ferro"
+    elif 11 <= hero_rating <= 20:
+        return "Bronze"
+    elif 21 <= hero_rating <= 50:
+        return "Prata"
+    elif 51 <= hero_rating <= 80:
+        return "Ouro"
+    elif 81 <= hero_rating <= 90:
+        return "Diamante"
+    elif 91 <= hero_rating <= 100:
+        return "Lendário"
+    else:
+        return "Imortal"
