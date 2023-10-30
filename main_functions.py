@@ -29,7 +29,8 @@ def random_hero_league(hero_quantity):
     for i in range(hero_quantity):
         hero_name = random_hero_name()
         hero_xp = random_hero_xp(1,11000)
-        hero_league.append([hero_name, hero_xp])
+        hero_rating = 0
+        hero_league.append([hero_name, hero_xp, hero_rating])
 
     return hero_league
 
@@ -53,3 +54,11 @@ def lvl_info(hero_xp):
         return "Imortal"
     else:
         return "Radiante"
+    
+def hero_match(hero_1, hero_2):
+    if hero_1[1] > hero_2[1]:
+        hero_1[2] += 1
+        hero_2[2] -= 1
+    else:
+        hero_2[2] += 1
+        hero_1[2] -= 1
