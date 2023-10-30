@@ -51,7 +51,7 @@ def random_hero_league(hero_quantity):
 
 def hero_championship(hero_league, seasons=1):
     for i in range(len(hero_league)):
-        for j in range(len(hero_league))
+        for j in range(len(hero_league)):
             if i == j :
                 continue
             else:
