@@ -24,20 +24,6 @@ def random_number(min_number, max_number):
     return random.randint(min_number, max_number)
 
 
-def hero_match(hero_1, hero_2):
-    hero_total_xp = hero_1[1] + hero_2[1]
-    match_number = random_number(1,hero_total_xp)
-
-    if match_number < hero_1[1]:
-        hero_1[2] += 1
-        hero_2[3] += 1
-        return hero_1[0]
-    else:
-        hero_2[2] += 1
-        hero_1[3] += 1
-        return hero_2[0]
-
-
 def random_hero_league(hero_quantity):
     hero_league = []
     for i in range(hero_quantity):
@@ -47,21 +33,6 @@ def random_hero_league(hero_quantity):
 
     return hero_league
 
-
-def hero_championship(hero_league, seasons=1):
-    for k in range(seasons):
-        for i in range(len(hero_league)):
-            for j in range(len(hero_league)):
-                if i == j :
-                    continue
-                else:
-                    hero_match(hero_league[i], hero_league[j])
-
-
-def show_heroes(hero_league):
-    print("Hero/XP/Victory/Defeat/Ratio")
-    for hero in hero_league:
-        print(f"{hero[0]},{hero[1]},{hero[2]},{hero[3]},{hero[2]-hero[3]}")
 
 def lvl_info(hero_xp):
     if hero_xp < 1000:
@@ -80,6 +51,35 @@ def lvl_info(hero_xp):
         return "Imortal"
     else:
         return "Radiante"
+
+
+def show_heroes(hero_league):
+    print("Hero/XP/Victory/Defeat/Ratio")
+    for hero in hero_league:
+        print(f"{hero[0]},{hero[1]},{hero[2]},{hero[3]},{hero[2]-hero[3]}")
+
+
+def hero_match(hero_1, hero_2):
+    hero_total_xp = hero_1[1] + hero_2[1]
+    match_number = random_number(1,hero_total_xp)
+
+    if match_number < hero_1[1]:
+        hero_1[2] += 1
+        hero_2[3] += 1
+        return hero_1[0]
+    else:
+        hero_2[2] += 1
+        hero_1[3] += 1
+        return hero_2[0]
+
+def hero_championship(hero_league, seasons=1):
+    for k in range(seasons):
+        for i in range(len(hero_league)):
+            for j in range(len(hero_league)):
+                if i == j :
+                    continue
+                else:
+                    hero_match(hero_league[i], hero_league[j])
 
 
 def rating_info(hero_rating):
