@@ -1,5 +1,6 @@
 import unittest
 from main_functions import *
+from io import StringIO
 
 class TestMainFunctions(unittest.TestCase):
 
@@ -29,6 +30,22 @@ class TestMainFunctions(unittest.TestCase):
         self.assertEqual(lvl_info(8500), "Ascendente")
         self.assertEqual(lvl_info(9500), "Imortal")
         self.assertEqual(lvl_info(10500), "Radiante")
+
+        
+    def test_show_heroes(self):
+        hero_league = [['Hero1', 5000, 10, 5], ['Hero2', 3000, 8, 7]]
+        capturedOutput = StringIO()
+        sys.stdout = capturedOutput  # redireciona stdout
+        show_heroes(hero_league)
+        sys.stdout = sys.__stdout__  # reseta redirecionamento
+        expected_output = (
+            "Hero\tXP\tVictory\tDefeat\tRatio\n"
+            "Hero1\t5000\t10\t5\t5\n"
+            "Hero2\t3000\t8\t7\t1\n"
+        )
+        self.assertEqual(capturedOutput.getvalue(), expected_output)
+
+
 
 if __name__ == "__main__":
     unittest.main()
