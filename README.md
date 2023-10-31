@@ -20,22 +20,3 @@ Ao final deve se exibir uma mensagem:
 
 ```
 
-O algoritmo de pontuação será o Elo Rating System:
-
-1. **Cálculo inicial**: Cada jogador começa com um rating de base, muitas vezes 1200, que se ajusta com base em vitórias, derrotas ou empates contra outros jogadores.
-2. **Ajuste de Rating**: Após cada jogo, o rating de um jogador é ajustado com base no resultado e no rating do adversário. Se um jogador com um rating mais baixo vence um jogador com um rating mais alto, o ganhador receberá mais pontos do que se vencesse um jogador com um rating mais baixo.
-3. **Fórmula**: A fórmula básica para ajustar o rating é:  
-
-$$
-Novo Rating = Rating Antigo + K(Resultado - Expectativa)  
-$$
-
-onde:  
-
-   - K é um fator constante (geralmente 32, 24 ou 16),
-   - Resultado é 1 para uma vitória, 0,5 para um empate e 0 para uma derrota,
-   - Expectativa  é calculada pela fórmula:  
-
-$$
-Expectativa = \frac{1}{1 + 10^{((Rating do Adversário - Rating Antigo)/400)}}
-$$
