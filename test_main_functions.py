@@ -45,6 +45,17 @@ class TestMainFunctions(unittest.TestCase):
         )
         self.assertEqual(capturedOutput.getvalue(), expected_output)
 
+    def test_hero_match(self):
+        hero1 = ['Hero1', 5000, 0, 0]
+        hero2 = ['Hero2', 3000, 0, 0]
+        random.seed(0)  # Este seed garante que o teste seja repetível
+        winner = hero_match(hero1, hero2)
+        self.assertEqual(winner, 'Hero1')
+        self.assertEqual(hero1[2], 1)
+        self.assertEqual(hero1[3], 0)
+        self.assertEqual(hero2[2], 0)
+        self.assertEqual(hero2[3], 1)
+        
 
 
 if __name__ == "__main__":
