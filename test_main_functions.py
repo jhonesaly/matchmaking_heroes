@@ -64,7 +64,16 @@ class TestMainFunctions(unittest.TestCase):
         self.assertEqual(hero_league[0][3], 0)
         self.assertEqual(hero_league[1][2], 0)
         self.assertEqual(hero_league[1][3], 1)
-        
+
+    def test_rating_info(self):
+        self.assertEqual(rating_info(5), "Ferro")
+        self.assertEqual(rating_info(15), "Bronze")
+        self.assertEqual(rating_info(25), "Prata")
+        self.assertEqual(rating_info(55), "Ouro")
+        self.assertEqual(rating_info(85), "Diamante")
+        self.assertEqual(rating_info(95), "Lendário")
+        self.assertEqual(rating_info(105), "Imortal")
+     
 
 if __name__ == "__main__":
     unittest.main()
