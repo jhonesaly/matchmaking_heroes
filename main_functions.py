@@ -102,9 +102,3 @@ if __name__ == '__main__':
 
     import os
     os.system('cls')
-    
-    hero_league = random_hero_league(20)
-    hero_championship(hero_league, 10)
-    show_heroes(hero_league)
-    for hero in hero_league:
-        print(rating_info(hero[2]-hero[3]))
