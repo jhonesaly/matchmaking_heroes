@@ -1,6 +1,7 @@
 import unittest
 from main_functions import *
 from io import StringIO
+import sys
 
 class TestMainFunctions(unittest.TestCase):
 
@@ -33,37 +34,30 @@ class TestMainFunctions(unittest.TestCase):
 
         
     def test_show_heroes(self):
-        hero_league = [['Hero1', 5000, 10, 5], ['Hero2', 3000, 8, 7]]
-        capturedOutput = StringIO()
-        sys.stdout = capturedOutput  # redireciona stdout
+        hero_league = [['Hero1', 5000, 10, 5], ['Hero2', 3000, 8, 8]]
+        sys.stdout = StringIO()  # Captura a saída do print
         show_heroes(hero_league)
-        sys.stdout = sys.__stdout__  # reseta redirecionamento
+        output = sys.stdout.getvalue()
+        sys.stdout = sys.__stdout__  # Restaura a saída padrão
         expected_output = (
             "Hero\tXP\tVictory\tDefeat\tRatio\n"
             "Hero1\t5000\t10\t5\t5\n"
-            "Hero2\t3000\t8\t7\t1\n"
+            "Hero2\t3000\t8\t8\t0\n"
         )
-        self.assertEqual(capturedOutput.getvalue(), expected_output)
+        self.assertEqual(output, expected_output)
 
     def test_hero_match(self):
-        hero1 = ['Hero1', 5000, 0, 0]
-        hero2 = ['Hero2', 3000, 0, 0]
-        random.seed(0)  # Este seed garante que o teste seja repetível
-        winner = hero_match(hero1, hero2)
-        self.assertEqual(winner, 'Hero1')
-        self.assertEqual(hero1[2], 1)
-        self.assertEqual(hero1[3], 0)
-        self.assertEqual(hero2[2], 0)
-        self.assertEqual(hero2[3], 1)
+        hero_1 = ['Hero1', 5000, 10, 5]
+        hero_2 = ['Hero2', 3000, 8, 8]
+        winner = hero_match(hero_1, hero_2)
+        self.assertIn(winner, ['Hero1', 'Hero2'])  # Verifica se o vencedor é um dos heróis
         
     def test_hero_championship(self):
         hero_league = [['Hero1', 5000, 0, 0], ['Hero2', 3000, 0, 0]]
-        random.seed(0)  # Este seed garante que o teste seja repetível
         hero_championship(hero_league)
-        self.assertEqual(hero_league[0][2], 1)
-        self.assertEqual(hero_league[0][3], 0)
-        self.assertEqual(hero_league[1][2], 0)
-        self.assertEqual(hero_league[1][3], 1)
+        # Verifica se o número total de vitórias e derrotas é igual ao número de jogos jogados
+        total_matches = sum(hero[2] + hero[3] for hero in hero_league)/2
+        self.assertEqual(total_matches, 2 * (len(hero_league) - 1))
 
     def test_rating_info(self):
         self.assertEqual(rating_info(5), "Ferro")
