@@ -30,11 +30,11 @@ def hero_match(hero_1, hero_2):
 
     if match_number < hero_1[1]:
         hero_1[2] += 1
-        hero_2[2] -= 1
+        hero_2[3] += 1
         return hero_1[0]
     else:
         hero_2[2] += 1
-        hero_1[2] -= 1
+        hero_1[3] += 1
         return hero_2[0]
 
 
@@ -43,25 +43,25 @@ def random_hero_league(hero_quantity):
     for i in range(hero_quantity):
         hero_name = random_name()
         hero_xp = random_number(1,11000)
-        hero_rating = 0
-        hero_league.append([hero_name, hero_xp, hero_rating])
+        hero_league.append([hero_name, hero_xp, 0, 0])
 
     return hero_league
 
 
 def hero_championship(hero_league, seasons=1):
-    for i in range(len(hero_league)):
-        for j in range(len(hero_league)):
-            if i == j :
-                continue
-            else:
-                hero_match(hero_league[i], hero_league[j])
+    for k in range(seasons):
+        for i in range(len(hero_league)):
+            for j in range(len(hero_league)):
+                if i == j :
+                    continue
+                else:
+                    hero_match(hero_league[i], hero_league[j])
 
 
 def show_heroes(hero_league):
+    print("Hero/XP/Victory/Defeat/Ratio")
     for hero in hero_league:
-        print("Hero/XP/Ratio")
-        print(f"{hero[0]},{hero[1]},{hero[2]}")
+        print(f"{hero[0]},{hero[1]},{hero[2]},{hero[3]},{hero[2]-hero[3]}")
 
 def lvl_info(hero_xp):
     if hero_xp < 1000:
@@ -104,10 +104,7 @@ if __name__ == '__main__':
     os.system('cls')
     
     hero_league = random_hero_league(20)
+    hero_championship(hero_league, 10)
     show_heroes(hero_league)
-    
-    print(hero_league[0])
-    print('X')
-    print(hero_league[1])
-    winner = hero_match(hero_league[0],hero_league[1])
-    print(f"o vencedor é {winner}")
+    for hero in hero_league:
+        print(rating_info(hero[2]-hero[3]))
