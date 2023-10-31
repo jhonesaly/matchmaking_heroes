@@ -56,7 +56,15 @@ class TestMainFunctions(unittest.TestCase):
         self.assertEqual(hero2[2], 0)
         self.assertEqual(hero2[3], 1)
         
-
+    def test_hero_championship(self):
+        hero_league = [['Hero1', 5000, 0, 0], ['Hero2', 3000, 0, 0]]
+        random.seed(0)  # Este seed garante que o teste seja repetível
+        hero_championship(hero_league)
+        self.assertEqual(hero_league[0][2], 1)
+        self.assertEqual(hero_league[0][3], 0)
+        self.assertEqual(hero_league[1][2], 0)
+        self.assertEqual(hero_league[1][3], 1)
+        
 
 if __name__ == "__main__":
     unittest.main()
