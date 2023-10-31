@@ -54,9 +54,9 @@ def lvl_info(hero_xp):
 
 
 def show_heroes(hero_league):
-    print("Hero/XP/Victory/Defeat/Ratio")
+    print("Hero\tXP\tVictory\tDefeat\tRatio")
     for hero in hero_league:
-        print(f"{hero[0]},{hero[1]},{hero[2]},{hero[3]},{hero[2]-hero[3]}")
+        print(f"{hero[0]}\t{hero[1]}\t{hero[2]}\t{hero[3]}\t{hero[2]-hero[3]}")
 
 
 def hero_match(hero_1, hero_2):
