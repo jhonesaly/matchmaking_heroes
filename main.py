@@ -6,19 +6,18 @@ from main_functions import *
 
 print("Bem-vindo ao machmaking dos heróis!")
 herois = random_hero_league(20)
-
+hero_championship(herois, 4)
 
 while True:
 
     os.system('cls')
 
     # Listando heróis
-    print("Os heróis disponíveis são:")
-    for heroi in herois:
-        print(heroi[0])
+    print("Esses são os heróis da liga: ")
+    show_heroes(herois)
 
     # Input de herói escolhido
-    heroi_escolhido = input("Por favor, escolha um herói da lista para saber o seu nível: ")
+    heroi_escolhido = input("Por favor, escolha um herói da lista para saber a sua categoria: ")
 
     # Verifica se escolha está na lista
 
@@ -27,13 +26,13 @@ while True:
     for heroi in herois:
         if heroi[0] == heroi_escolhido:
             heroi_na_lista = True
-            xp_heroi = heroi[1]
+            vitorias_heroi = heroi[2]
+            rating_heroi = rating_info(heroi[2]-heroi[3])
             break
 
     if heroi_na_lista:
-        # Mostrando nível do herói
-        nivel_heroi = lvl_info(xp_heroi)
-        print(f"O Herói de nome **{heroi_escolhido}** está no nível de **{nivel_heroi}**")
+        # Mostrando categoria do herói
+        print(f"O Herói tem de saldo de **{vitorias_heroi}** está no nível de **{rating_heroi}**")
 
     else:
         print("Esse herói não está na lista.")
@@ -41,7 +40,7 @@ while True:
 
         if novo_heroi.lower() == 's':
             novo_xp = int(input(f"Digite o xp do herói {heroi_escolhido}: "))
-            herois.append([heroi_escolhido, novo_xp])
+            herois.append([heroi_escolhido, novo_xp, 0, 0])
 
             continue
         else:
